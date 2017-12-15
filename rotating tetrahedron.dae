@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.79.0 commit date:2017-09-11, commit time:10:43, hash:5bd8ac9</authoring_tool>
+    </contributor>
+    <created>2017-12-15T17:24:08</created>
+    <modified>2017-12-15T17:24:08</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images/>
+  <library_geometries>
+    <geometry id="Solid-mesh" name="Solid">
+      <mesh>
+        <source id="Solid-mesh-positions">
+          <float_array id="Solid-mesh-positions-array" count="12">0 0 1 0.9428091 0 -0.3333333 -0.4714045 0.8164966 -0.3333333 -0.4714045 -0.8164966 -0.3333333</float_array>
+          <technique_common>
+            <accessor source="#Solid-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Solid-mesh-normals">
+          <float_array id="Solid-mesh-normals-array" count="12">0.4714046 0.8164967 0.3333333 -0.9428091 0 0.3333333 0.4714046 -0.8164967 0.3333333 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#Solid-mesh-normals-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Solid-mesh-vertices">
+          <input semantic="POSITION" source="#Solid-mesh-positions"/>
+        </vertices>
+        <triangles count="4">
+          <input semantic="VERTEX" source="#Solid-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Solid-mesh-normals" offset="1"/>
+          <p>0 0 1 0 2 0 0 1 2 1 3 1 0 2 3 2 1 2 1 3 3 3 2 3</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_animations>
+    <animation id="Solid_rotation_euler_X">
+      <source id="Solid_rotation_euler_X-input">
+        <float_array id="Solid_rotation_euler_X-input-array" count="2">0 0.375</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_X-input-array" count="2" stride="1">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_X-output">
+        <float_array id="Solid_rotation_euler_X-output-array" count="2">0 0</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_X-output-array" count="2" stride="1">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_X-interpolation">
+        <Name_array id="Solid_rotation_euler_X-interpolation-array" count="2">BEZIER BEZIER</Name_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_X-interpolation-array" count="2" stride="1">
+            <param name="INTERPOLATION" type="name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_X-intangent">
+        <float_array id="Solid_rotation_euler_X-intangent-array" count="4">-0.1464043 0 0.2285957 0</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_X-intangent-array" count="2" stride="2">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_X-outtangent">
+        <float_array id="Solid_rotation_euler_X-outtangent-array" count="4">0.1464043 0 0.5214043 0</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_X-outtangent-array" count="2" stride="2">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="Solid_rotation_euler_X-sampler">
+        <input semantic="INPUT" source="#Solid_rotation_euler_X-input"/>
+        <input semantic="OUTPUT" source="#Solid_rotation_euler_X-output"/>
+        <input semantic="INTERPOLATION" source="#Solid_rotation_euler_X-interpolation"/>
+        <input semantic="IN_TANGENT" source="#Solid_rotation_euler_X-intangent"/>
+        <input semantic="OUT_TANGENT" source="#Solid_rotation_euler_X-outtangent"/>
+      </sampler>
+      <channel source="#Solid_rotation_euler_X-sampler" target="Solid/rotationX.ANGLE"/>
+    </animation>
+    <animation id="Solid_rotation_euler_Y">
+      <source id="Solid_rotation_euler_Y-input">
+        <float_array id="Solid_rotation_euler_Y-input-array" count="2">0 0.375</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Y-input-array" count="2" stride="1">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_Y-output">
+        <float_array id="Solid_rotation_euler_Y-output-array" count="2">0 0</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Y-output-array" count="2" stride="1">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_Y-interpolation">
+        <Name_array id="Solid_rotation_euler_Y-interpolation-array" count="2">BEZIER BEZIER</Name_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Y-interpolation-array" count="2" stride="1">
+            <param name="INTERPOLATION" type="name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_Y-intangent">
+        <float_array id="Solid_rotation_euler_Y-intangent-array" count="4">-0.1464043 0 0.2285957 0</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Y-intangent-array" count="2" stride="2">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_Y-outtangent">
+        <float_array id="Solid_rotation_euler_Y-outtangent-array" count="4">0.1464043 0 0.5214043 0</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Y-outtangent-array" count="2" stride="2">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="Solid_rotation_euler_Y-sampler">
+        <input semantic="INPUT" source="#Solid_rotation_euler_Y-input"/>
+        <input semantic="OUTPUT" source="#Solid_rotation_euler_Y-output"/>
+        <input semantic="INTERPOLATION" source="#Solid_rotation_euler_Y-interpolation"/>
+        <input semantic="IN_TANGENT" source="#Solid_rotation_euler_Y-intangent"/>
+        <input semantic="OUT_TANGENT" source="#Solid_rotation_euler_Y-outtangent"/>
+      </sampler>
+      <channel source="#Solid_rotation_euler_Y-sampler" target="Solid/rotationY.ANGLE"/>
+    </animation>
+    <animation id="Solid_rotation_euler_Z">
+      <source id="Solid_rotation_euler_Z-input">
+        <float_array id="Solid_rotation_euler_Z-input-array" count="2">0 0.375</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Z-input-array" count="2" stride="1">
+            <param name="TIME" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_Z-output">
+        <float_array id="Solid_rotation_euler_Z-output-array" count="2">0 -120</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Z-output-array" count="2" stride="1">
+            <param name="ANGLE" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_Z-interpolation">
+        <Name_array id="Solid_rotation_euler_Z-interpolation-array" count="2">BEZIER BEZIER</Name_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Z-interpolation-array" count="2" stride="1">
+            <param name="INTERPOLATION" type="name"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_Z-intangent">
+        <float_array id="Solid_rotation_euler_Z-intangent-array" count="4">-0.1464043 0 0.2285957 -120</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Z-intangent-array" count="2" stride="2">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <source id="Solid_rotation_euler_Z-outtangent">
+        <float_array id="Solid_rotation_euler_Z-outtangent-array" count="4">0.1464043 0 0.5214043 -120</float_array>
+        <technique_common>
+          <accessor source="#Solid_rotation_euler_Z-outtangent-array" count="2" stride="2">
+            <param name="X" type="float"/>
+            <param name="Y" type="float"/>
+          </accessor>
+        </technique_common>
+      </source>
+      <sampler id="Solid_rotation_euler_Z-sampler">
+        <input semantic="INPUT" source="#Solid_rotation_euler_Z-input"/>
+        <input semantic="OUTPUT" source="#Solid_rotation_euler_Z-output"/>
+        <input semantic="INTERPOLATION" source="#Solid_rotation_euler_Z-interpolation"/>
+        <input semantic="IN_TANGENT" source="#Solid_rotation_euler_Z-intangent"/>
+        <input semantic="OUT_TANGENT" source="#Solid_rotation_euler_Z-outtangent"/>
+      </sampler>
+      <channel source="#Solid_rotation_euler_Z-sampler" target="Solid/rotationZ.ANGLE"/>
+    </animation>
+  </library_animations>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Solid" name="Solid" type="NODE">
+        <translate sid="location">0 0 0</translate>
+        <rotate sid="rotationZ">0 0 1 -91.01361</rotate>
+        <rotate sid="rotationY">0 1 0 0</rotate>
+        <rotate sid="rotationX">1 0 0 0</rotate>
+        <scale sid="scale">1 1 1</scale>
+        <instance_geometry url="#Solid-mesh" name="Solid"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
