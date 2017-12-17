@@ -4,6 +4,7 @@ d:\github\axle\ffw-axle\ffw-axle\debug\camera.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\firstpersonrenderer.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\game.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\gamepadhandler.obj
+d:\github\axle\ffw-axle\ffw-axle\debug\inputhandler.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\keyboardhandler.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\loader.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\main.obj
@@ -13,6 +14,12 @@ d:\github\axle\ffw-axle\ffw-axle\debug\renderer.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\shader.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\texture.obj
 d:\github\axle\ffw-axle\ffw-axle\debug\thirdpersonrenderer.obj
+d:\github\axle\ffw-axle\debug\ffw-axle.ilk
+d:\github\axle\ffw-axle\debug\ffw-axle.exe
+d:\github\axle\ffw-axle\debug\ffw-axle.pdb
 d:\github\axle\ffw-axle\ffw-axle\debug\ffw-axle.tlog\cl.command.1.tlog
 d:\github\axle\ffw-axle\ffw-axle\debug\ffw-axle.tlog\cl.read.1.tlog
 d:\github\axle\ffw-axle\ffw-axle\debug\ffw-axle.tlog\cl.write.1.tlog
+d:\github\axle\ffw-axle\ffw-axle\debug\ffw-axle.tlog\link.command.1.tlog
+d:\github\axle\ffw-axle\ffw-axle\debug\ffw-axle.tlog\link.read.1.tlog
+d:\github\axle\ffw-axle\ffw-axle\debug\ffw-axle.tlog\link.write.1.tlog
