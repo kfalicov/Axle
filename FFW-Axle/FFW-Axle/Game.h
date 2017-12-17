@@ -16,9 +16,9 @@ public:
 	void destroyGame(); // cleans up memory
 
 private:
-	int windowWidth;
-	int windowHeight;
-	InputHandler* inputHandler;
+	int _width;
+	int _height;
+	InputHandler* _inputHandler;
 protected:
 
 };

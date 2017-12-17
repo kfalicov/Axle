@@ -3,9 +3,9 @@
 
 
 Game::Game(int width, int height) : 
-	windowWidth(width), 
-	windowHeight(height),
-	inputHandler(&InputHandler::getInputHandler())
+	_width(width), 
+	_height(height),
+	_inputHandler(&InputHandler::getInputHandler())
 {
 }
 
@@ -27,5 +27,5 @@ void Game::render()
 
 void Game::destroyGame()
 {
-	inputHandler->destroyInputHandler();
+	_inputHandler->destroyInputHandler();
 }

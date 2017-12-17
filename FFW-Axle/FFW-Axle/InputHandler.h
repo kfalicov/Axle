@@ -26,9 +26,9 @@ public:
 private:
 	InputHandler();
 
-	GamePadHandler* gamePadHandler;
-	MouseHandler* mouseHandler;
-	KeyboardHandler* keyboardHandler;
+	GamePadHandler* _gamePadHandler;
+	MouseHandler* _mouseHandler;
+	KeyboardHandler* _keyboardHandler;
 
 protected:
 };

@@ -4,17 +4,17 @@
 
 InputHandler::InputHandler()
 {
-	keyboardHandler = &KeyboardHandler::getKeyboard();
-	mouseHandler = &MouseHandler::getMouse();
-	gamePadHandler = &GamePadHandler::getGamePad();
+	_keyboardHandler = &KeyboardHandler::getKeyboard();
+	_mouseHandler = &MouseHandler::getMouse();
+	_gamePadHandler = &GamePadHandler::getGamePad();
 }
 
 
 InputHandler::~InputHandler()
 {
-	keyboardHandler->destroyKeyboard();
-	mouseHandler->destroyMouse();
-	gamePadHandler->destroyGamePad();
+	_keyboardHandler->destroyKeyboard();
+	_mouseHandler->destroyMouse();
+	_gamePadHandler->destroyGamePad();
 }
 
 
@@ -31,23 +31,23 @@ InputHandler& InputHandler::getInputHandler()
 void InputHandler::destroyInputHandler()
 {
 	InputHandler* handler = &getInputHandler();
-	delete handler;
+	delete handler; // frees the memory of the handler
 }
 
 
 bool InputHandler::getKeyState(int key)
 {
-	return keyboardHandler->getKeyState(key);
+	return _keyboardHandler->getKeyState(key);
 }
 bool InputHandler::getButtonState(int button)
 {
-	return mouseHandler->getMouseState(button);
+	return _mouseHandler->getMouseState(button);
 }
 
 glm::vec2 InputHandler::getMousePosition()
 {
 	glm::vec2 pos;
-	pos.x = (float)mouseHandler->getX();
-	pos.y = (float)mouseHandler->getY();
+	pos.x = (float)_mouseHandler->getX();
+	pos.y = (float)_mouseHandler->getY();
 	return pos;
 }
