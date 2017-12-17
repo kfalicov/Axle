@@ -7,12 +7,13 @@
 */
 class GamePadHandler
 {
-public:
-
-	GamePadHandler();
-	~GamePadHandler();
-
 private:
+	GamePadHandler();
+
+public:
+	~GamePadHandler();
+	static GamePadHandler& getGamePad();
+	void destroyGamePad();
 
 protected:
 };

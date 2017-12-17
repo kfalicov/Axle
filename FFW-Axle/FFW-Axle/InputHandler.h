@@ -4,6 +4,7 @@
 #include "MouseHandler.h"
 #include "KeyboardHandler.h"
 #include <stdio.h>
+#include <glm\glm.hpp>
 
 /*
 	Wrapper class. This is a singleton
@@ -12,19 +13,18 @@
 class InputHandler
 {
 public:
-	static InputHandler* getInputHandler()
-	{
-		if (InputHandler::inputHandlerInstance == NULL)
-		{
-			InputHandler::inputHandlerInstance = new InputHandler();
-		}
-		return InputHandler::inputHandlerInstance;
-	}
-	~InputHandler();
+	~InputHandler(); // destroys the input handler
 
+	static InputHandler& getInputHandler(); // returns the single instance of inputhandler
+	void destroyInputHandler(); // destroys the inputhandler
+
+	bool getKeyState(int key); // returns the state of a key on the keyboard
+	bool getButtonState(int button); // returns the state of a button on the mouse
+
+	glm::vec2 getMousePosition(); // returns the position of the mouse
+	
 private:
 	InputHandler();
-	static InputHandler* inputHandlerInstance;
 
 	GamePadHandler* gamePadHandler;
 	MouseHandler* mouseHandler;
