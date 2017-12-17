@@ -5,6 +5,7 @@
 #include <glew.h>
 #include <glfw3.h>
 #include <iostream>
+#include "Game.h"
 
 //Update Rate
 #define Updates_Per_Second 60.0f
@@ -58,6 +59,9 @@ int main()
 	double lastTime = glfwGetTime();
 	double deltaTime = 0.0f;
 	bool msaa = false;
+
+	Game* game = new Game(width, height);
+
 	//Main game loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -79,14 +83,15 @@ int main()
 		while (deltaTime >= 1.0f / Updates_Per_Second)
 		{
 			//update the game
-			//game->update();
+			game->update();
 			--deltaTime;
 		}
 		//render
-		//game->render();
+		game->render();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+	game->destroyGame();
 	glfwDestroyWindow(window); // Frees the memory the window is using
 	glfwTerminate(); // Frees the memory glfw is using
 					 //system("PAUSE"); //Just if you want to pause console at end

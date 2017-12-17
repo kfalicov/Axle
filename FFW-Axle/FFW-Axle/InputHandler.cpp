@@ -12,6 +12,9 @@ InputHandler::InputHandler()
 
 InputHandler::~InputHandler()
 {
+	keyboardHandler->destroyKeyboard();
+	mouseHandler->destroyMouse();
+	gamePadHandler->destroyGamePad();
 }
 
 

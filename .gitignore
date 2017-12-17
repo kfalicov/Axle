@@ -1,3 +1,7 @@
 *.db
 FFW-Axle/FFW-Axle.VC.VC.opendb
 *.db
+*.obj
+FFW-Axle/Debug/FFW-Axle.pdb
+*.exe
+*.pdb
