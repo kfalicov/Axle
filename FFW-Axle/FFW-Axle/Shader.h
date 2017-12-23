@@ -3,6 +3,7 @@
 #include <glew.h>
 #include <glfw3.h>
 #include <iostream>
+#include <glm\glm.hpp>
 /*
 	Defines a shader.
 	Based on the ThinMatrix's version of a shader
@@ -10,13 +11,19 @@
 class Shader
 {
 public:
-	Shader(char* vertexShaderFilename, char* fragmentShaderFilename); // creates a new shader
+	Shader(char* vertexShaderFilename, char* fragmentShaderFilename);// creates a new shader
+	void loadBooleanUniform(GLuint location, bool value);
+	void loadMatrixUniform(GLuint location, glm::mat4 mat);
 	~Shader(); // destroys the shader
 
 	void bind(); // binds the shader program so it will be used by opengl
 	void unbind();
 	virtual void bindAttributes() = 0;
 	void bindAttribute(int attrib, char* variableName);
+	GLuint getUniformLocation(char* name);
+	void loadFloatUniform(GLuint location, float value);
+	void loadVectorUniform(GLuint location, glm::vec3 vector);
+	virtual void getAllUniformLocations() = 0;
 
 private:
 	GLuint createShader(const std::string& shaderCode, GLenum shaderType); // helper method to create a shader

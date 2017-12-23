@@ -2,8 +2,14 @@
 
 
 
-Renderer::Renderer()
+Renderer::Renderer(StaticShader* shader)
 {
+	_staticShader = shader;
+	_projectionMatrix = new glm::mat4();
+	createProjectionMatrix(_projectionMatrix);
+	_staticShader->bind();
+	_staticShader->loadProjectionMatrix(*_projectionMatrix);
+	_staticShader->unbind();
 }
 
 
@@ -17,31 +23,11 @@ void Renderer::clearScreen()
 	glClearColor(0, 1, 0, 1);
 }
 
-void Renderer::renderMesh(Mesh* mesh)
+void Renderer::draw(std::vector<Entity*>* entities)
 {
-	glBindVertexArray(mesh->getVAOID());
-	glEnableVertexAttribArray(0);
-	glDrawElements(GL_TRIANGLES, mesh->getVertexCount(), GL_UNSIGNED_INT, 0);
-	glDisableVertexAttribArray(0);
-	glBindVertexArray(0);
-}
-
-
-void Renderer::renderTexturedMesh(TexturedMesh* texturedMesh)
-{
-	Mesh* mesh = texturedMesh->getMesh();
-	glBindVertexArray(mesh->getVAOID());
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-	glActiveTexture(GL_TEXTURE0);
-	texturedMesh->getTexture()->bind();
-	glDrawElements(GL_TRIANGLES, mesh->getVertexCount(), GL_UNSIGNED_INT, 0);
-	glDisableVertexAttribArray(0);
-	glDisableVertexAttribArray(1);
-	glBindVertexArray(0);
-}
-
-void Renderer::draw()
-{
-
+	for (int i = 0; i < entities->size(); i++)
+	{
+		Entity* entity = entities->at(i);
+		entity->render();
+	}
 }
