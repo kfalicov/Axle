@@ -14,6 +14,7 @@ Shader::Shader(char* vertexShaderFilename, char* fragmentShaderFilename)
 	glAttachShader(_program, _vertexShader);
 	glAttachShader(_program, _fragmentShader);
 
+	bindAttributes();
 	// Links the program and verifies the linking succeeded
 	glLinkProgram(_program); 
 	GLint result = 0;
@@ -32,8 +33,48 @@ Shader::Shader(char* vertexShaderFilename, char* fragmentShaderFilename)
 		std::cerr << "ERROR: Program Creation Failed. Validation failed\n";
 		exit(-1);
 	}
+	getAllUniformLocations();
 }
 
+void Shader::bindAttributes()
+{
+
+}
+
+void Shader::getAllUniformLocations()
+{
+
+}
+
+GLuint Shader::getUniformLocation(char* name)
+{
+	return glGetUniformLocation(_program, name);
+}
+
+void Shader::loadFloatUniform(GLuint location, float value)
+{
+	glUniform1f(location, value);
+}
+
+void Shader::loadVectorUniform(GLuint location, glm::vec3 vector)
+{
+	glUniform3f(location, vector.x,vector.y,vector.z);
+}
+
+void Shader::loadBooleanUniform(GLuint location, bool value)
+{
+	float toLoad = 0;
+	if (value)
+	{
+		toLoad = 1;
+	}
+	glUniform1f(location, toLoad);
+}
+
+void Shader::loadMatrixUniform(GLuint location, glm::mat4 mat)
+{
+	glUniformMatrix4fv(location, 1, false, &mat[0][0]);
+}
 
 Shader::~Shader()
 {

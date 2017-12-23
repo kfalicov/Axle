@@ -5,11 +5,11 @@
 Game::Game(int width, int height) : 
 	_width(width), 
 	_height(height),
-	_inputHandler(&InputHandler::getInputHandler()),
-	_renderer(new Renderer())
+	_inputHandler(&InputHandler::getInputHandler())
 {
 	_loader = new Loader();
 	_staticShader = new StaticShader("./res/shaders/vertexShader.vs", "./res/shaders/fragmentShader.fs");
+	_renderer = new Renderer(_staticShader);
 	float vertices[] = {
 		-0.5f, 0.5f, 0.0f,
 		-0.5f, -0.5f, 0.0f,
@@ -48,7 +48,7 @@ void Game::render()
 {
 	_renderer->clearScreen();
 	_staticShader->bind();
-	_renderer->renderTexturedMesh(tmpTexturedMesh);
+	// render entities
 	_staticShader->unbind();
 }
 
