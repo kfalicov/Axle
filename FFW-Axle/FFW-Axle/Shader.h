@@ -4,7 +4,8 @@
 #include <glfw3.h>
 #include <iostream>
 /*
-	Defines a shader
+	Defines a shader.
+	Based on the ThinMatrix's version of a shader
 */
 class Shader
 {
@@ -13,10 +14,13 @@ public:
 	~Shader(); // destroys the shader
 
 	void bind(); // binds the shader program so it will be used by opengl
+	void unbind();
+	virtual void bindAttributes() = 0;
+	void bindAttribute(int attrib, char* variableName);
 
 private:
-	GLuint createShader(const char* shaderCode, GLenum shaderType); // helper method to create a shader
-	const char* getShaderCode(char* filename); // helper method to get the code of a shader
+	GLuint createShader(const std::string& shaderCode, GLenum shaderType); // helper method to create a shader
+	std::string getShaderCode(char* filename); // helper method to get the code of a shader
 
 	GLuint _program;
 	GLuint _fragmentShader;

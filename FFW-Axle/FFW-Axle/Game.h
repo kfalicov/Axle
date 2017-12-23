@@ -1,6 +1,9 @@
 #ifndef _GAME_H
 #define _GAME_H
+#include "Renderer.h"
+#include "Loader.h"
 #include "InputHandler.h"
+#include "StaticShader.h"
 
 /*
 	Puts everything together
@@ -19,6 +22,13 @@ private:
 	int _width;
 	int _height;
 	InputHandler* _inputHandler;
+
+	Renderer* _renderer;
+	Loader* _loader;
+	StaticShader* _staticShader;
+
+	Mesh* tmpMesh;
+	TexturedMesh* tmpTexturedMesh;
 protected:
 
 };

@@ -14,9 +14,6 @@ Shader::Shader(char* vertexShaderFilename, char* fragmentShaderFilename)
 	glAttachShader(_program, _vertexShader);
 	glAttachShader(_program, _fragmentShader);
 
-	//Binds attriblocations to the program
-	glBindAttribLocation(_program, 0, "position");
-
 	// Links the program and verifies the linking succeeded
 	glLinkProgram(_program); 
 	GLint result = 0;
@@ -40,6 +37,7 @@ Shader::Shader(char* vertexShaderFilename, char* fragmentShaderFilename)
 
 Shader::~Shader()
 {
+	unbind();
 	// detaches the shaders from the program
 	glDetachShader(_program, _fragmentShader);
 	glDetachShader(_program, _vertexShader);
@@ -55,7 +53,18 @@ void Shader::bind()
 	glUseProgram(_program); // tells opengl to use the shader program
 }
 
-GLuint Shader::createShader(const char* shaderCode, GLenum shaderType)
+void Shader::unbind()
+{
+	glUseProgram(0);
+}
+
+
+void Shader::bindAttribute(int attrib, char* variableName)
+{
+	glBindAttribLocation(_program, attrib, variableName);
+}
+
+GLuint Shader::createShader(const std::string& shaderCode, GLenum shaderType)
 {
 	GLuint shader = glCreateShader(shaderType); // creates a shader
 
@@ -69,8 +78,8 @@ GLuint Shader::createShader(const char* shaderCode, GLenum shaderType)
 	const GLchar* shaderSource[1];
 	GLint shaderSourceLength[1];
 
-	shaderSource[0] = shaderCode;
-	shaderSourceLength[0] = strlen(shaderCode);
+	shaderSource[0] = shaderCode.c_str();
+	shaderSourceLength[0] = shaderCode.length();
 
 	glShaderSource(shader, 1, shaderSource, shaderSourceLength); // adds the shader source code to the shader
 	glCompileShader(shader); // compiles the shader
@@ -84,7 +93,7 @@ GLuint Shader::createShader(const char* shaderCode, GLenum shaderType)
 	}
 	return shader;
 }
-const char* Shader::getShaderCode(char* filename)
+std::string Shader::getShaderCode(char* filename)
 {
 	std::ifstream file;
 	file.open(filename); // opens the file asked to by the parameter
@@ -106,5 +115,5 @@ const char* Shader::getShaderCode(char* filename)
 		std::cerr << "Unable to load shader: " << filename << std::endl;
 	}
 	// returns the contents of the file
-	return output.c_str();
+	return output;
 }
