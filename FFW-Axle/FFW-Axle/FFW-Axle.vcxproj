@@ -133,7 +133,9 @@
     <ClCompile Include="MouseHandler.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="StaticShader.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TexturedMesh.cpp" />
     <ClCompile Include="ThirdPersonRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,8 +150,11 @@
     <ClInclude Include="MouseHandler.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="StaticShader.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TexturedMesh.h" />
     <ClInclude Include="ThirdPersonRenderer.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

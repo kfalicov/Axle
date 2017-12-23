@@ -1,3 +1,15 @@
 *.db
 FFW-Axle/FFW-Axle.VC.VC.opendb
 *.db
+*.obj
+FFW-Axle/Debug/FFW-Axle.pdb
+*.exe
+*.pdb
+*.pdb
+FFW-Axle/Debug/FFW-Axle.ilk
+*.suo
+FFW-Axle/FFW-Axle/Debug/FFW-Axle.tlog/CL.read.1.tlog
+*.obj
+FFW-Axle/FFW-Axle/Debug/vc140.pdb
+*.idb
+*.db
