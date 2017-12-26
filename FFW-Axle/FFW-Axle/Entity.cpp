@@ -1,5 +1,5 @@
 #include "Entity.h"
-
+#include <iostream>
 
 
 Entity::Entity(glm::vec3 position, float rx, float ry, float rz, float scale)
@@ -65,4 +65,10 @@ void Entity::setRotationZ(float z)
 void Entity::setScale(float s)
 {
 	_scale = s;
+}
+
+void Entity::update() {}
+void Entity::render(Shader* shader) 
+{
+	std::cout << "Error Using parent Render function\n";
 }

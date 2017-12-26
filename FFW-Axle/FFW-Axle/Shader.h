@@ -4,6 +4,8 @@
 #include <glfw3.h>
 #include <iostream>
 #include <glm\glm.hpp>
+#include "Camera.h"
+#include "Util.h"
 /*
 	Defines a shader.
 	Based on the ThinMatrix's version of a shader
@@ -25,6 +27,12 @@ public:
 	void loadVectorUniform(GLuint location, glm::vec3 vector);
 	virtual void getAllUniformLocations() = 0;
 
+	void loadTransformationMatrix(glm::mat4 matrix);
+
+	void loadProjectionMatrix(glm::mat4 projection);
+
+	void loadViewMatrix(Camera * camera);
+
 private:
 	GLuint createShader(const std::string& shaderCode, GLenum shaderType); // helper method to create a shader
 	std::string getShaderCode(char* filename); // helper method to get the code of a shader
@@ -32,6 +40,9 @@ private:
 	GLuint _program;
 	GLuint _fragmentShader;
 	GLuint _vertexShader;
+	GLuint _transformationMatrixLocation;
+	GLuint _projectionMatrixLocation;
+	GLuint _viewMatrixLocation;
 protected:
 
 

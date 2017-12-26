@@ -1,6 +1,7 @@
 #ifndef  _ENTITY_H
 #define _ENTITY_H
 #include <glm\glm.hpp>
+#include "Shader.h"
 
 /*
 	Store the basic properties of an Entity. An entity is something that exists in the game world. It does not have to be renderered
@@ -25,7 +26,8 @@ public:
 	void setRotationZ(float z);
 	void setScale(float s);
 
-	virtual void render();
+	virtual void render(Shader* shader) = 0;
+	virtual void update() = 0;
 
 private:
 	glm::vec3 _position;

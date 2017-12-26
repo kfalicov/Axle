@@ -4,6 +4,8 @@
 #include "Loader.h"
 #include "InputHandler.h"
 #include "StaticShader.h"
+#include "TexturedEntity.h"
+#include "Util.h"
 
 /*
 	Puts everything together
@@ -22,6 +24,7 @@ private:
 	int _width;
 	int _height;
 	InputHandler* _inputHandler;
+	Camera* _camera;
 
 	Renderer* _renderer;
 	Loader* _loader;
@@ -29,6 +32,8 @@ private:
 
 	Mesh* tmpMesh;
 	TexturedMesh* tmpTexturedMesh;
+
+	std::vector<Entity*>* _entities;
 protected:
 
 };

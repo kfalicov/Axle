@@ -11,7 +11,7 @@ MeshEntity::~MeshEntity()
 {
 }
 
-void MeshEntity::render()
+void MeshEntity::render(Shader* shader)
 {
 	glBindVertexArray(_mesh->getVAOID());
 	glEnableVertexAttribArray(0);
@@ -23,4 +23,9 @@ void MeshEntity::render()
 Mesh* MeshEntity::getMesh()
 {
 	return _mesh;
+}
+
+void MeshEntity::update()
+{
+
 }
