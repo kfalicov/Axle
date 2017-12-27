@@ -24,4 +24,5 @@ void GamePadHandler::destroyGamePad()
 {
 	GamePadHandler* gamePad = &GamePadHandler::getGamePad();
 	delete gamePad;
+	gamePad = NULL;
 }

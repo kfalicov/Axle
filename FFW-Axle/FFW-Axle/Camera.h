@@ -1,6 +1,5 @@
 #ifndef _CAMERA_H
 #define _CAMERA_H
-
 #include <glm/glm.hpp>
 
 /*
@@ -9,14 +8,45 @@
 class Camera
 {
 public:
-	Camera(glm::vec3 position); // creates a new camera
-	~Camera(); // destroyes the camera
+	/*
+		Creates a new camera
+		@param position The initial position of the camera
+	*/
+	Camera(glm::vec3 position);
 
+	/*
+		Destroys the camera	
+	*/
+	~Camera();
+
+	/*
+		Returns the position of the camera
+		@return Returns the position of the camera
+	*/
 	glm::vec3 getPosition();
+
+	/*
+		Returns the pitch of the camera
+		@return Returns the position of the camera
+	*/
 	float getPitch();
+
+	/*
+		Returns the yaw of the camera
+		@return Returns the yaw of the camera
+	*/
 	float getYaw();
+
+	/*
+		Returns the roll of the camera
+		@return Returns the roll of the camera
+	*/
 	float getRoll();
-	void move();
+
+	/*
+		Moves the camera
+	*/
+	void move(); 
 
 private:
 	glm::vec3 _position;

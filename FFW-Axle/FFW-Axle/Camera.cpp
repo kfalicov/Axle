@@ -31,3 +31,8 @@ float Camera::getYaw()
 {
 	return _yaw;
 }
+
+void Camera::move()
+{
+
+}

@@ -13,12 +13,33 @@
 class Game
 {
 public:
-	Game(int width, int height); // Creates a new game
-	~Game(); // Destroyes the game
+
+	/*
+		Creates a new game
+		@param width The width of the window
+		@param height The height of the window
+	*/
+	Game(int width, int height);
+
+	/*
+		Destroys the game
+	*/
+	~Game();
 	
-	void update(); // updates the games logic.
-	void render(); // renders the game
-	void destroyGame(); // cleans up memory
+	/*
+		Controls all of the logic in the game and is called a certain number of times per second
+	*/
+	void update(); 
+
+	/*
+		Renders the game to the screen
+	*/
+	void render();
+
+	/*
+		Cleans up memory used by the game
+	*/
+	void destroyGame();
 
 private:
 	int _width;
@@ -30,10 +51,10 @@ private:
 	Loader* _loader;
 	StaticShader* _staticShader;
 
-	Mesh* tmpMesh;
-	TexturedMesh* tmpTexturedMesh;
+	Mesh* tmpMesh; // tmp
+	TexturedMesh* tmpTexturedMesh; // tmp
 
-	std::vector<Entity*>* _entities;
+	std::vector<Entity*>* _entities; // stores all of the entities currently in the game
 protected:
 
 };

@@ -15,9 +15,26 @@
 class Renderer
 {
 public:
+	/*
+		Creates a new renderer
+	*/
 	Renderer();
+
+	/*
+		Destroys the rendereer
+	*/
 	~Renderer();
-	void clearScreen(); // Clears the screen and the relevent buffer bits
+
+	/*
+		Clears the screen and relevent buffer bits
+	*/
+	void clearScreen();
+
+	/*
+		Draws entities based on the shader passed in
+		@param entities The entities to draw
+		@param shader The shader to use
+	*/
 	void draw(std::vector<Entity*>* entities, StaticShader* shader);
 private:
 
