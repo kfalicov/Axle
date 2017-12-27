@@ -13,3 +13,6 @@ FFW-Axle/FFW-Axle/Debug/FFW-Axle.tlog/CL.read.1.tlog
 FFW-Axle/FFW-Axle/Debug/vc140.pdb
 *.idb
 *.db
+*.suo
+FFW-Axle/Debug/FFW-Axle.ilk
+*.db

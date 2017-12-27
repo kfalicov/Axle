@@ -17,30 +17,89 @@ Game::Game(int width, int height) :
 	_staticShader->loadProjectionMatrix(*projectionMatrix);
 	_staticShader->unbind();
 	_renderer = new Renderer();
-	float vertices[] = {
-		-0.5f, 0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f
-	};
 
-	int indices[] = {
-		0, 1, 3,
-		3, 1, 2
+	// vertices, texturecoords, and indices for a cube
+	float vertices[] = {
+		-0.5f,0.5f,-0.5f,
+		-0.5f,-0.5f,-0.5f,
+		0.5f,-0.5f,-0.5f,
+		0.5f,0.5f,-0.5f,
+
+		-0.5f,0.5f,0.5f,
+		-0.5f,-0.5f,0.5f,
+		0.5f,-0.5f,0.5f,
+		0.5f,0.5f,0.5f,
+
+		0.5f,0.5f,-0.5f,
+		0.5f,-0.5f,-0.5f,
+		0.5f,-0.5f,0.5f,
+		0.5f,0.5f,0.5f,
+
+		-0.5f,0.5f,-0.5f,
+		-0.5f,-0.5f,-0.5f,
+		-0.5f,-0.5f,0.5f,
+		-0.5f,0.5f,0.5f,
+
+		-0.5f,0.5f,0.5f,
+		-0.5f,0.5f,-0.5f,
+		0.5f,0.5f,-0.5f,
+		0.5f,0.5f,0.5f,
+
+		-0.5f,-0.5f,0.5f,
+		-0.5f,-0.5f,-0.5f,
+		0.5f,-0.5f,-0.5f,
+		0.5f,-0.5f,0.5f
+
 	};
 
 	float textureCoords[] = {
 		0,0,
 		0,1,
 		1,1,
+		1,0,
+		0,0,
+		0,1,
+		1,1,
+		1,0,
+		0,0,
+		0,1,
+		1,1,
+		1,0,
+		0,0,
+		0,1,
+		1,1,
+		1,0,
+		0,0,
+		0,1,
+		1,1,
+		1,0,
+		0,0,
+		0,1,
+		1,1,
 		1,0
+	};
+
+	int indices[] = {
+		0,1,3,
+		3,1,2,
+		4,5,7,
+		7,5,6,
+		8,9,11,
+		11,9,10,
+		12,13,15,
+		15,13,14,
+		16,17,19,
+		19,17,18,
+		20,21,23,
+		23,21,22
+
 	};
 
 	tmpMesh = _loader->loadMesh(vertices, indices, textureCoords, my_sizeof(vertices) / my_sizeof(vertices[0]),my_sizeof(indices) / my_sizeof(indices[0]));
 	Texture* texture = new Texture(_loader->loadTexture("./res/textures/bridge.png"));
 	tmpTexturedMesh = new TexturedMesh(tmpMesh, texture);
 
-	Entity* testEntity = new TexturedEntity(glm::vec3(0,0,-1),0,0,0,1,tmpTexturedMesh);
+	Entity* testEntity = new TexturedEntity(glm::vec3(0,0,-10),0,0,0,1,tmpTexturedMesh);
 	_entities->push_back(testEntity);
 }
 
