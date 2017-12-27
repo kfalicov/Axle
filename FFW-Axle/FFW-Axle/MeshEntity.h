@@ -10,7 +10,8 @@ public:
 	MeshEntity(glm::vec3 position, float rx, float ry, float rz, float scale, Mesh* mesh);
 	~MeshEntity();
 
-	void render();
+	void render(Shader* shader);
+	void update();
 
 	Mesh* getMesh();
 

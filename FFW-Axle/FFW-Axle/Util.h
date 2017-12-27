@@ -28,16 +28,16 @@ static glm::mat4 createTransformationMatrix(glm::vec3 translation, float rx, flo
 static void createProjectionMatrix(glm::mat4* matrix)
 {
 	float aspectRatio = (float)width / (float)height;
-	float yScale = (1.0f / glm::tan(glm::radians(FOV / 2.0f))) * aspectRatio;
-	float xScale = yScale / aspectRatio;
-	float frustumLength = FAR - NEAR;
+	float y_scale = (float)((1.0f / glm::tan(glm::radians(FOV / 2.0f))) * aspectRatio);
+	float x_scale = y_scale / aspectRatio;
+	float frustum_length = FAR - NEAR;
 
 	glm::mat4* tmp = new glm::mat4();
-	(*tmp)[0][0] = xScale;
-	(*tmp)[1][1] = yScale;
-	(*tmp)[2][2] = -((FAR + NEAR) / frustumLength);
+	(*tmp)[0][0] = x_scale;
+	(*tmp)[1][1] = y_scale;
+	(*tmp)[2][2] = -((FAR + NEAR) / frustum_length);
 	(*tmp)[2][3] = -1;
-	(*tmp)[3][2] = -((2 * NEAR * FAR) / frustumLength);
+	(*tmp)[3][2] = -((2 * NEAR * FAR) / frustum_length);
 	(*tmp)[3][3] = 0;
 
 	*matrix = *tmp;

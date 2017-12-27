@@ -12,7 +12,8 @@ public:
 
 	TexturedMesh* getTexturedMesh();
 
-	void render();
+	void render(Shader* shader);
+	void update();
 private:
 	TexturedMesh* _texturedMesh;
 };

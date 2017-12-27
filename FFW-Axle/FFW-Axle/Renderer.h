@@ -15,13 +15,12 @@
 class Renderer
 {
 public:
-	Renderer(StaticShader* shader);
+	Renderer();
 	~Renderer();
 	void clearScreen(); // Clears the screen and the relevent buffer bits
-	void draw(std::vector<Entity*>* entities);
+	void draw(std::vector<Entity*>* entities, StaticShader* shader);
 private:
-	glm::mat4* _projectionMatrix;
-	StaticShader* _staticShader;
+
 protected:
 
 };

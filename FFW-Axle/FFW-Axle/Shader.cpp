@@ -43,7 +43,9 @@ void Shader::bindAttributes()
 
 void Shader::getAllUniformLocations()
 {
-
+	_transformationMatrixLocation = getUniformLocation("transformationMatrix");
+	_projectionMatrixLocation = getUniformLocation("projectionMatrix");
+	_viewMatrixLocation = getUniformLocation("viewMatrix");
 }
 
 GLuint Shader::getUniformLocation(char* name)
@@ -127,10 +129,11 @@ GLuint Shader::createShader(const std::string& shaderCode, GLenum shaderType)
 
 	// verifies the shader compiled successfully
 	GLint result = 0;
-	glGetShaderiv(_program, GL_COMPILE_STATUS, &result);
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
 	if (result == GL_FALSE)
 	{
 		std::cerr << "ERROR: Shader failed to compile\n";
+		exit(-1);
 	}
 	return shader;
 }
@@ -157,4 +160,22 @@ std::string Shader::getShaderCode(char* filename)
 	}
 	// returns the contents of the file
 	return output;
+}
+
+
+void Shader::loadTransformationMatrix(glm::mat4 matrix)
+{
+	loadMatrixUniform(_transformationMatrixLocation, matrix);
+}
+
+void Shader::loadProjectionMatrix(glm::mat4 projection)
+{
+	loadMatrixUniform(_projectionMatrixLocation, projection);
+}
+
+void Shader::loadViewMatrix(Camera* camera)
+{
+	glm::mat4 viewMatrix = createViewMatrix(camera);
+
+	loadMatrixUniform(_viewMatrixLocation, viewMatrix);
 }
