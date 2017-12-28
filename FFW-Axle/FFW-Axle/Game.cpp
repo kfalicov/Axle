@@ -110,6 +110,8 @@ Game::~Game()
 
 void Game::update()
 {
+
+	// loops through all of the entities and updates them
 	for (int i = 0; i < _entities->size(); i++)
 	{
 		Entity* entity = _entities->at(i);
@@ -119,7 +121,10 @@ void Game::update()
 
 void Game::render()
 {
+	// clears the screen
 	_renderer->clearScreen();
+
+
 	_staticShader->bind();
 	_staticShader->loadViewMatrix(_camera);
 	_renderer->draw(_entities, _staticShader);
@@ -131,5 +136,15 @@ void Game::destroyGame()
 {
 	delete _loader;
 	delete _staticShader;
+	delete _entities;
+	delete _renderer;
+	delete _camera;
+
+	_loader = NULL;
+	_staticShader = NULL;
+	_entities = NULL;
+	_renderer = NULL;
+	_camera = NULL;
 	_inputHandler->destroyInputHandler();
+	_inputHandler = NULL;
 }

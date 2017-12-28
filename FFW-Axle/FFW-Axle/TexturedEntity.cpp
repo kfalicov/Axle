@@ -18,15 +18,17 @@ TexturedMesh* TexturedEntity::getTexturedMesh()
 void TexturedEntity::render(Shader* shader)
 {
 	Mesh* mesh = _texturedMesh->getMesh();
-	glBindVertexArray(mesh->getVAOID());
-	glEnableVertexAttribArray(0);
+	glBindVertexArray(mesh->getVAOID()); // loads the vao
+	glEnableVertexAttribArray(0); // enables both vertex attribute arrays defined by the shader
 	glEnableVertexAttribArray(1);
 
-	glm::mat4 transformationMatrix = createTransformationMatrix(getPosition(), getRotationX(), getRotationY(), getRotationZ(), getScale());
-	shader->loadTransformationMatrix(transformationMatrix);
+	glm::mat4 transformationMatrix = createTransformationMatrix(getPosition(), getRotationX(), getRotationY(), getRotationZ(), getScale()); // create a transformation matrix based on the current entity
+	shader->loadTransformationMatrix(transformationMatrix); // loads the matrix into the transformation matrix
 	glActiveTexture(GL_TEXTURE0);
-	_texturedMesh->getTexture()->bind();
-	glDrawElements(GL_TRIANGLES, mesh->getVertexCount(), GL_UNSIGNED_INT, 0);
+	_texturedMesh->getTexture()->bind(); // binds the texture
+	glDrawElements(GL_TRIANGLES, mesh->getVertexCount(), GL_UNSIGNED_INT, 0); // draws the mesh
+
+	// cleans up memory
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
 	glBindVertexArray(0);

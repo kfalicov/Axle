@@ -9,14 +9,19 @@ Loader::Loader()
 
 Loader::~Loader()
 {
+	// Deletes the vaos
 	for (int i = 0; (unsigned int)i < vaos->size(); i++)
 	{
 		glDeleteVertexArrays(1, &(vaos->at(i)));
 	}
+
+	// deletes the vbos
 	for (int i = 0; (unsigned int)i < vbos->size(); i++)
 	{
 		glDeleteBuffers(1, &(vbos->at(i)));
 	}
+
+	// deletes the textures
 	for (int i = 0; (unsigned int)i < textures->size(); i++)\
 	{
 		glDeleteTextures(1, &(textures->at(i)));

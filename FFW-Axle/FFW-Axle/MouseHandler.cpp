@@ -40,6 +40,7 @@ void MouseHandler::destroyMouse()
 {
 	MouseHandler* mouse = &getMouse();
 	delete mouse;
+	mouse = NULL;
 }
 void MouseHandler::cursor_position_callbackFun(GLFWwindow* window, double x, double y)
 {

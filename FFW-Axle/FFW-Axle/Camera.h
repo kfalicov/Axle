@@ -1,6 +1,7 @@
 #ifndef _CAMERA_H
 #define _CAMERA_H
 #include <glm/glm.hpp>
+#include "InputHandler.h"
 
 /*
 	Controls what is displayed to the user
@@ -45,8 +46,9 @@ public:
 
 	/*
 		Moves the camera
+		@param handler A pointer to the input handler
 	*/
-	void move(); 
+	void move(InputHandler* handler); 
 
 private:
 	glm::vec3 _position;
