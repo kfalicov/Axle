@@ -32,6 +32,7 @@ void InputHandler::destroyInputHandler()
 {
 	InputHandler* handler = &getInputHandler();
 	delete handler; // frees the memory of the handler
+	handler = NULL;
 }
 
 

@@ -13,22 +13,53 @@
 class InputHandler
 {
 public:
-	~InputHandler(); // destroys the input handler
 
-	static InputHandler& getInputHandler(); // returns the single instance of inputhandler
-	void destroyInputHandler(); // destroys the inputhandler
+	/*
+		Destroys the InputHandler
+	*/
+	~InputHandler();
 
-	bool getKeyState(int key); // returns the state of a key on the keyboard
-	bool getButtonState(int button); // returns the state of a button on the mouse
+	/*
+		Returns the only instance of a InputHandler
+		@return Returns the only instance of a InputHandler
+	*/
+	static InputHandler& getInputHandler();
 
-	glm::vec2 getMousePosition(); // returns the position of the mouse
+	/*
+		Destroys the only instance of a inputhandler
+	*/
+	static void destroyInputHandler();
+
+	/*
+		Returns the state of a key on the keyboard
+		@param key The keycode to get the state of
+		@return Returns the state of the key
+	*/
+	bool getKeyState(int key);
+
+	/*
+		Returns the state of a mouse button
+		@param button The button code to get the state of
+		@return Returns the state of the button
+	*/
+	bool getButtonState(int button); 
+
+	/*
+		Returns the position of the mouse on the screen
+		@return Returns the position of the mouse on the screen
+	*/
+	glm::vec2 getMousePosition(); 
 	
 private:
-	InputHandler();
 
-	GamePadHandler* _gamePadHandler;
-	MouseHandler* _mouseHandler;
-	KeyboardHandler* _keyboardHandler;
+	/*
+		Creates a new InputHandler
+	*/
+	InputHandler(); 
+
+	GamePadHandler* _gamePadHandler; // A pointer to the only instance of the GamePadHandler
+	MouseHandler* _mouseHandler; // A pointer to the only instance of the MouseHandler
+	KeyboardHandler* _keyboardHandler; // A pointer to the only instance of the KeyboardHandler
 
 protected:
 };

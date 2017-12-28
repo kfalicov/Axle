@@ -21,6 +21,7 @@ void Renderer::clearScreen()
 
 void Renderer::draw(std::vector<Entity*>* entities, StaticShader* shader)
 {
+	// renders all of the entities
 	for (int i = 0; i < entities->size(); i++)
 	{
 		Entity* entity = entities->at(i);

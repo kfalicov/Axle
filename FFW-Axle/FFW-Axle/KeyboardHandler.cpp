@@ -54,6 +54,7 @@ void KeyboardHandler::destroyKeyboard()
 {
 	KeyboardHandler* keyboard = &getKeyboard();
 	delete keyboard;
+	keyboard = NULL;
 }
 
 bool KeyboardHandler::getKeyState(int key)

@@ -13,6 +13,15 @@ static int height = 768;
 // found on https://www.geeksforgeeks.org/how-to-find-size-of-array-in-cc-without-using-sizeof-operator/
 #define my_sizeof(type) ((char *)(&type+1)-(char*)(&type))
 
+/*
+	Creates a new transformation matrix based on the details of the object passed in
+	@param translation The translation of the position
+	@param rx The pitch
+	@param ry The yaw
+	@param rz The roll
+	@param scale The scale
+	@return Retuns a transformation matrix for the object passed in
+*/
 static glm::mat4 createTransformationMatrix(glm::vec3 translation, float rx, float ry, float rz, float scale)
 {
 	glm::mat4* matrix = new glm::mat4(1);
@@ -25,6 +34,10 @@ static glm::mat4 createTransformationMatrix(glm::vec3 translation, float rx, flo
 	return *matrix;
 }
 
+/*
+	Creates a projection matrix
+	@param matrix The matrix to store the result in
+*/
 static void createProjectionMatrix(glm::mat4* matrix)
 {
 	float aspectRatio = (float)width / (float)height;
@@ -43,6 +56,11 @@ static void createProjectionMatrix(glm::mat4* matrix)
 	*matrix = *tmp;
 }
 
+/*
+	Creates a view matrix
+	@param camera A pointer to the game camera
+	@return Returns the view matrix
+*/
 static glm::mat4 createViewMatrix(Camera* camera)
 {
 	glm::mat4* viewMatrix = new glm::mat4(1);

@@ -67,8 +67,11 @@ void Entity::setScale(float s)
 	_scale = s;
 }
 
-void Entity::update() {}
+void Entity::update() 
+{
+	std::cerr << "Warning: Using parent Update function\n";
+}
 void Entity::render(Shader* shader) 
 {
-	std::cout << "Error Using parent Render function\n";
+	std::cerr << "Warning: Using parent Render function\n";
 }
