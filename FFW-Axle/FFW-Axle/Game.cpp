@@ -95,11 +95,11 @@ Game::Game(int width, int height) :
 
 	};
 
-	tmpMesh = _loader->loadMesh(vertices, indices, textureCoords, my_sizeof(vertices) / my_sizeof(vertices[0]),my_sizeof(indices) / my_sizeof(indices[0]));
-	Texture* texture = new Texture(_loader->loadTexture("./res/textures/bridge.png"));
+	tmpMesh = _loader->loadObj("./res/models/stall.obj");//_loader->loadMesh(vertices, indices, textureCoords, my_sizeof(vertices) / my_sizeof(vertices[0]),my_sizeof(indices) / my_sizeof(indices[0]));
+	Texture* texture = new Texture(_loader->loadTexture("./res/textures/stallTexture_preview.png"));
 	tmpTexturedMesh = new TexturedMesh(tmpMesh, texture);
 
-	Entity* testEntity = new TexturedEntity(glm::vec3(0,0,-10),0,0,0,1,tmpTexturedMesh);
+	Entity* testEntity = new TexturedEntity(glm::vec3(0,0,-50),0,0,0,1,tmpTexturedMesh);
 	_entities->push_back(testEntity);
 }
 
