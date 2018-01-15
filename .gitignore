@@ -33,3 +33,12 @@ FFW-Axle/FFW-Axle/Debug/Texture.obj
 FFW-Axle/FFW-Axle/Debug/TexturedEntity.obj
 FFW-Axle/FFW-Axle/Debug/TexturedMesh.obj
 FFW-Axle/FFW-Axle/Debug/main.obj
+FFW-Axle/FFW-Axle/Debug/Exception.obj
+*.suo
+FFW-Axle/Debug/FFW-Axle.ilk
+*.pdb
+FFW-Axle/FFW-Axle.VC.db
+*.db
+FFW-Axle/FFW-Axle/Debug/FFW-Axle.log
+*.vcxproj
+FFW-Axle/FFW-Axle/FFW-Axle.vcxproj.filters
