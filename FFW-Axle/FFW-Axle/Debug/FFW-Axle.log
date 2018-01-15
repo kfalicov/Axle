@@ -1,7 +1,3 @@
-﻿  Loader.cpp
-d:\github\axle\ffw-axle\ffw-axle\loader.cpp(195): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\github\axle\ffw-axle\ffw-axle\loader.cpp(234): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\github\axle\ffw-axle\ffw-axle\loader.cpp(309): warning C4018: '<': signed/unsigned mismatch
-d:\github\axle\ffw-axle\ffw-axle\loader.cpp(317): warning C4018: '<': signed/unsigned mismatch
+﻿  TexturedEntity.cpp
   FFW-Axle.vcxproj -> D:\GitHub\Axle\FFW-Axle\Debug\FFW-Axle.exe
   FFW-Axle.vcxproj -> D:\GitHub\Axle\FFW-Axle\Debug\FFW-Axle.pdb (Partial PDB)
