@@ -96,7 +96,6 @@ void processVertex(char* vertexData0, char* vertexData1, char* vertexData2, std:
 	int currentVertexPointer = ::atoi(vertexData0) - 1;
 	indices->push_back(currentVertexPointer);
 	int index = ::atoi(vertexData1) - 1;
-	std::cout << textures->size() << std::endl;
 	glm::vec2 currentTex = textures->at(index);
 	textureArray[currentVertexPointer * 2] = currentTex.x;
 	textureArray[currentVertexPointer * 2 + 1] = 1 - currentTex.y;
@@ -104,6 +103,10 @@ void processVertex(char* vertexData0, char* vertexData1, char* vertexData2, std:
 	normalsArray[currentVertexPointer * 3] = currentNorm.x;
 	normalsArray[currentVertexPointer * 3 + 1] = currentNorm.y;
 	normalsArray[currentVertexPointer * 3 + 2] = currentNorm.z;
+
+	free(vertexData0);
+	free(vertexData1);
+	free(vertexData2);
 }
 
 /*
@@ -131,6 +134,7 @@ Mesh* Loader::loadObj(char* filename)
 		while (file.good())
 		{
 			getline(file, line);
+			std::cout << "Handling line: " << line << std::endl;
 			if (line.length() == 0)
 			{
 				continue;
@@ -154,7 +158,7 @@ Mesh* Loader::loadObj(char* filename)
 						loopCounter++;
 						continue;
 					}
-					float tmp = ::atof(tokens);
+					float tmp = (float)::atof(tokens);
 					if (tmpCounter == 0)
 					{
 						texCoord.x = tmp;
@@ -249,8 +253,11 @@ Mesh* Loader::loadObj(char* filename)
 			}
 			else if (line.at(0) == 'f')
 			{
-				texturesArray = new float[vertices->size() * 2];
-				normalsArray = new float[vertices->size() * 3];
+				if (texturesArray == NULL && normalsArray == NULL)
+				{
+					texturesArray = new float[vertices->size() * 2];
+					normalsArray = new float[vertices->size() * 3];
+				}
 
 				char* str = (char*)line.c_str();
 				std::cout << "F Line: " << str << std::endl;
@@ -319,7 +326,10 @@ Mesh* Loader::loadObj(char* filename)
 		//	exit(-1);
 		//}
 		std::cout << "There should be : " << vertices->size() << " vertices\n";
-		return loadMesh(verticesArray, indicesArray, texturesArray, vertices->size(), indices->size());
+		std::cout << "There should be : " << indices->size() << " indices\n";
+		std::cout << "There should be : " << normals->size() << " normals\n";
+		std::cout << "There should be : " << texCoords->size() << " textures\n";
+		return loadMesh(verticesArray, indicesArray, texturesArray, vertices->size() * 3, indices->size());
 	}
 	else
 	{

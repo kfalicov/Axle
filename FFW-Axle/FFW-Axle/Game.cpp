@@ -99,7 +99,7 @@ Game::Game(int width, int height) :
 	Texture* texture = new Texture(_loader->loadTexture("./res/textures/stallTexture_preview.png"));
 	tmpTexturedMesh = new TexturedMesh(tmpMesh, texture);
 
-	Entity* testEntity = new TexturedEntity(glm::vec3(0,0,-50),0,0,0,1,tmpTexturedMesh);
+	Entity* testEntity = new TexturedEntity(glm::vec3(0,0,-25),0,0,0,1,tmpTexturedMesh);
 	_entities->push_back(testEntity);
 }
 
