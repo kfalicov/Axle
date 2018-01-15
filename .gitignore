@@ -1,7 +1,6 @@
 *.db
 FFW-Axle/FFW-Axle.VC.VC.opendb
 *.db
-*.obj
 FFW-Axle/Debug/FFW-Axle.pdb
 *.exe
 *.pdb
@@ -9,7 +8,6 @@ FFW-Axle/Debug/FFW-Axle.pdb
 FFW-Axle/Debug/FFW-Axle.ilk
 *.suo
 FFW-Axle/FFW-Axle/Debug/FFW-Axle.tlog/CL.read.1.tlog
-*.obj
 FFW-Axle/FFW-Axle/Debug/vc140.pdb
 *.idb
 *.db
@@ -17,3 +15,5 @@ FFW-Axle/FFW-Axle/Debug/vc140.pdb
 FFW-Axle/Debug/FFW-Axle.ilk
 *.db
 *.tlog
+FFW-Axel/FFW-Axle/Debug/*.obj
+FFW-Axle/FFW-Axle/Debug/Camera.obj
