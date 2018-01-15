@@ -11,7 +11,7 @@ static int width = 1366;
 static int height = 768;
 
 // found on https://www.geeksforgeeks.org/how-to-find-size-of-array-in-cc-without-using-sizeof-operator/
-#define my_sizeof(type) ((char *)(&type+1)-(char*)(&type))
+#define size_of(x)  (sizeof(x) / sizeof((x)[0]))
 
 /*
 	Creates a new transformation matrix based on the details of the object passed in

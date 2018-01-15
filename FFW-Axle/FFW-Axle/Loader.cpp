@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "Exception.h"
 
 Loader::Loader()
 {
@@ -93,6 +94,40 @@ Based on the ThinMatrix's implementation
 */
 void processVertex(char* vertexData0, char* vertexData1, char* vertexData2, std::vector<int>* indices, std::vector<glm::vec2>* textures, std::vector<glm::vec3>* normals, float* textureArray,float* normalsArray)
 {
+	if (vertexData0 == NULL)
+	{
+		throwNullPointerException("VertexData0 is NULL in processVertex", 0);
+	}
+	if (vertexData1 == NULL)
+	{
+		throwNullPointerException("VertexData1 is NULL in processVertex", 0);
+	}
+	if (vertexData2 == NULL)
+	{
+		throwNullPointerException("VertexData2 is NULL in processVertex", 0);
+	}
+	if (indices == NULL)
+	{
+		throwNullPointerException("Indices is NULL in processVertex", 0);
+	}
+	if (textures == NULL)
+	{
+		throwNullPointerException("Textures is NULL in processVertex", 0);
+	}
+	if (normals == NULL)
+	{
+		throwNullPointerException("Normals is NULL in processVertex", 0);
+	}
+	if (textureArray == NULL)
+	{
+		throwNullPointerException("TextureArray is NULL in processVertex", 0);
+	}
+	if (normalsArray == NULL)
+	{
+		throwNullPointerException("NormalsArray is NULL in processVertex", 0);
+	}
+
+	// Re-orders values so they will be in order
 	int currentVertexPointer = ::atoi(vertexData0) - 1;
 	indices->push_back(currentVertexPointer);
 	int index = ::atoi(vertexData1) - 1;
@@ -103,10 +138,6 @@ void processVertex(char* vertexData0, char* vertexData1, char* vertexData2, std:
 	normalsArray[currentVertexPointer * 3] = currentNorm.x;
 	normalsArray[currentVertexPointer * 3 + 1] = currentNorm.y;
 	normalsArray[currentVertexPointer * 3 + 2] = currentNorm.z;
-
-	free(vertexData0);
-	free(vertexData1);
-	free(vertexData2);
 }
 
 /*
@@ -123,6 +154,23 @@ Mesh* Loader::loadObj(char* filename)
 	std::vector<glm::vec3>* normals = new std::vector<glm::vec3>();
 	std::vector<int>* indices = new std::vector<int>();
 
+	if (vertices == NULL)
+	{
+		throwNullPointerException("Vertices is NULL in LoadOBJ", 0);
+	}
+	if (texCoords == NULL)
+	{
+		throwNullPointerException("TexCoords is NULL in LoadOBJ", 0);
+	}
+	if (normals == NULL)
+	{
+		throwNullPointerException("Normals is NULL in LoadOBJ", 0);
+	}
+	if (indices == NULL)
+	{
+		throwNullPointerException("Indices is NULL in LoadOBJ", 0);
+	}
+
 	float* verticesArray = NULL;
 	float* texturesArray = NULL;
 	float* normalsArray = NULL;
@@ -134,12 +182,11 @@ Mesh* Loader::loadObj(char* filename)
 		while (file.good())
 		{
 			getline(file, line);
-			std::cout << "Handling line: " << line << std::endl;
 			if (line.length() == 0)
 			{
 				continue;
 			}
-			if (line.at(0) == 'v' && line.at(1) == 't')
+			if (line.at(0) == 'v' && line.at(1) == 't') // parses texture coordinates
 			{
 				char* str = (char*)line.c_str();
 				char* tokens;
@@ -171,10 +218,9 @@ Mesh* Loader::loadObj(char* filename)
 					}
 					tokens = strtok_s(NULL, del, &context);
 				}
-				std::cout << "Added tex coord\n";
 				texCoords->push_back(texCoord);
 			}
-			else if (line.at(0) == 'v' && line.at(1) == 'n')
+			else if (line.at(0) == 'v' && line.at(1) == 'n') // parsing normal value
 			{
 				char* str = (char*)line.c_str();
 				char* tokens;
@@ -212,7 +258,7 @@ Mesh* Loader::loadObj(char* filename)
 				}
 				normals->push_back(normalVertex);
 			}
-			else if (line.at(0) == 'v')
+			else if (line.at(0) == 'v') // parsing vertex
 			{
 				char* str = (char*)line.c_str();
 				char* tokens;
@@ -251,16 +297,23 @@ Mesh* Loader::loadObj(char* filename)
 				}
 				vertices->push_back(vertex);
 			}
-			else if (line.at(0) == 'f')
+			else if (line.at(0) == 'f') // parsing face
 			{
 				if (texturesArray == NULL && normalsArray == NULL)
 				{
 					texturesArray = new float[vertices->size() * 2];
 					normalsArray = new float[vertices->size() * 3];
+					if (texturesArray == NULL)
+					{
+						throwNullPointerException("TexturesArray is NULL in LoadOBJ", 0);
+					}
+					if (normalsArray == NULL)
+					{
+						throwNullPointerException("NormalsArray is NULL in LoadOBJ", 0);
+					}
 				}
 
 				char* str = (char*)line.c_str();
-				std::cout << "F Line: " << str << std::endl;
 				char* tokens;
 				char* context;
 				const char* del = " ";
@@ -275,27 +328,44 @@ Mesh* Loader::loadObj(char* filename)
 						loopCounter++;
 						continue;
 					}
-					std::cout << "FIRST STRTOK TOKENS: " << tokens << std::endl;
 					char* vertexContext;
 					const char* vertexDel = "/";
-					char* vertexTokens = strtok_s(tokens,vertexDel,&vertexContext);
+					char* vertexTokens = strtok_s(tokens, vertexDel, &vertexContext);
 
 					char* point1 = (char*)malloc(60 * sizeof(char));
+					if (point1 == NULL)
+					{
+						throwNullPointerException("At point1 in loader", 0);
+					}
 					char* point2 = (char*)malloc(60 * sizeof(char));
+					if (point2 == NULL)
+					{
+						throwNullPointerException("At point2 in loader", 0);
+					}
 					char* point3 = (char*)malloc(60 * sizeof(char));
+					if (point3 == NULL)
+					{
+						throwNullPointerException("At point3 in loader", 0);
+					}
 					char counter = 0;
 					while (vertexTokens != NULL)
 					{
-						std::cout << vertexTokens << std::endl;
 						if (counter == 0) strcpy_s(point1, 60, vertexTokens);
-						else if(counter == 1) strcpy_s(point2, 60, vertexTokens);
+						else if (counter == 1) strcpy_s(point2, 60, vertexTokens);
 						else strcpy_s(point3, 60, vertexTokens);
-						//point[counter] = vertexTokens;
 						counter++;
 						vertexTokens = strtok_s(NULL, vertexDel, &vertexContext);
 					}
 
-					processVertex(point1,point2,point3, indices, texCoords, normals, texturesArray, normalsArray);
+					processVertex(point1, point2, point3, indices, texCoords, normals, texturesArray, normalsArray);
+
+					//Cleans up memory
+					free(point1);
+					free(point2);
+					free(point3);
+					point1 = NULL;
+					point2 = NULL;
+					point3 = NULL;
 
 					tokens = strtok_s(NULL, del, &context);
 				}
@@ -304,11 +374,18 @@ Mesh* Loader::loadObj(char* filename)
 
 		verticesArray = new float[vertices->size() * 3];
 		indicesArray = new int[indices->size()];
+		if (verticesArray == NULL)
+		{
+			throwNullPointerException("VerticesArray is NULL in LoadOBJ", 0);
+		}
+		if (indicesArray == NULL)
+		{
+			throwNullPointerException("IndicesArray is NULL in LoadOBJ", 0);
+		}
 
 		int vertexPointer = 0;
 		for (int i = 0; i < vertices->size(); i++)
 		{
-			std::cout << "Adding vertex to vertices array: " << (vertices->at(i)).x << std::endl;
 			verticesArray[vertexPointer++] = (vertices->at(i)).x;
 			verticesArray[vertexPointer++] = (vertices->at(i)).y;
 			verticesArray[vertexPointer++] = (vertices->at(i)).z;
@@ -316,7 +393,7 @@ Mesh* Loader::loadObj(char* filename)
 
 		for (int i = 0; i < indices->size(); i++)
 		{
-			indicesArray[i]  = (indices->at(i));
+			indicesArray[i] = (indices->at(i));
 		}
 		file.close();
 		//if (texturesArray == NULL)
@@ -325,16 +402,93 @@ Mesh* Loader::loadObj(char* filename)
 		//	std::cerr << "Error no texture coords\n";
 		//	exit(-1);
 		//}
-		std::cout << "There should be : " << vertices->size() << " vertices\n";
-		std::cout << "There should be : " << indices->size() << " indices\n";
-		std::cout << "There should be : " << normals->size() << " normals\n";
-		std::cout << "There should be : " << texCoords->size() << " textures\n";
-		return loadMesh(verticesArray, indicesArray, texturesArray, vertices->size() * 3, indices->size());
+
+		int verticesLength = vertices->size() * 3;
+		int indicesLength = indices->size();
+
+		if (vertices != NULL)
+		{
+			delete vertices;
+		}
+
+		if (texCoords != NULL)
+		{
+			delete texCoords;
+		}
+
+		if (normals != NULL)
+		{
+			delete normals;
+		}
+
+		if (indices != NULL)
+		{
+			delete indices;
+		}
+
+		//TODO: Clean up memory
+
+		/*if (verticesArray != NULL)
+		{
+			delete verticesArray;
+		}
+		if (texturesArray != NULL)
+		{
+			delete texturesArray;
+		}
+		if (normalsArray != NULL)
+		{
+			delete normalsArray;
+		}
+		if (indicesArray != NULL)
+		{
+			delete indicesArray;
+		}*/
+
+
+		return loadMesh(verticesArray, indicesArray, texturesArray, verticesLength, indicesLength);
 	}
 	else
 	{
 		std::cerr << "Unable to load model: " << filename << std::endl;
 	}
 	file.close();
+
+	if (vertices != NULL)
+	{
+		delete vertices;
+	}
+
+	if (texCoords != NULL)
+	{
+		delete texCoords;
+	}
+	
+	if (normals != NULL)
+	{
+		delete normals;
+	}
+
+	if (indices != NULL)
+	{
+		delete indices;
+	}
+
+	if (verticesArray != NULL)
+	{
+		delete verticesArray;
+	}
+	if (texturesArray != NULL)
+	{
+		delete texturesArray;
+	}
+	if (normalsArray != NULL)
+	{
+		delete normalsArray;
+	}
+	if (indicesArray != NULL)
+	{
+		delete indicesArray;
+	}
 	return NULL;
 }
