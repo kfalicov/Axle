@@ -45,6 +45,8 @@ public:
 	*/
 	GLuint loadTexture(char* filename);
 
+	Mesh* loadObj(char* filename);
+
 private:
 	std::vector<GLuint>* vaos; // stores all of the vaos
 	std::vector<GLuint>* vbos; // stores all of the vbos

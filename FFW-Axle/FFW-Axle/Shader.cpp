@@ -158,6 +158,7 @@ std::string Shader::getShaderCode(char* filename)
 	{
 		std::cerr << "Unable to load shader: " << filename << std::endl;
 	}
+	file.close();
 	// returns the contents of the file
 	return output;
 }
