@@ -1,18 +1,15 @@
-﻿  ThirdPersonRenderer.cpp
-  Texture.cpp
-  Shader.cpp
-  Renderer.cpp
-  MouseHandler.cpp
-  Mesh.cpp
-  main.cpp
+﻿  StringLib.cpp
   Loader.cpp
-  KeyboardHandler.cpp
-  InputHandler.cpp
-  GamePadHandler.cpp
-  Game.cpp
-  FirstPersonRenderer.cpp
-  Camera.cpp
+d:\github\axle\ffw-axle\ffw-axle\loader.cpp(241): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\github\axle\ffw-axle\ffw-axle\loader.cpp(280): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\github\axle\ffw-axle\ffw-axle\loader.cpp(387): warning C4018: '<': signed/unsigned mismatch
+d:\github\axle\ffw-axle\ffw-axle\loader.cpp(394): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
+  LINK : D:\GitHub\Axle\FFW-Axle\Debug\FFW-Axle.exe not found or not built by the last incremental link; performing full link
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+soil.lib(image_DXT.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'soil.lib(image_DXT.obj)' or at 'D:\GitHub\Axle\FFW-Axle\Debug\vc100.pdb'; linking object as if no debug info
+soil.lib(image_helper.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'soil.lib(image_helper.obj)' or at 'D:\GitHub\Axle\FFW-Axle\Debug\vc100.pdb'; linking object as if no debug info
+soil.lib(SOIL.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'soil.lib(SOIL.obj)' or at 'D:\GitHub\Axle\FFW-Axle\Debug\vc100.pdb'; linking object as if no debug info
+soil.lib(stb_image_aug.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'soil.lib(stb_image_aug.obj)' or at 'D:\GitHub\Axle\FFW-Axle\Debug\vc100.pdb'; linking object as if no debug info
   FFW-Axle.vcxproj -> D:\GitHub\Axle\FFW-Axle\Debug\FFW-Axle.exe
   FFW-Axle.vcxproj -> D:\GitHub\Axle\FFW-Axle\Debug\FFW-Axle.pdb (Partial PDB)
